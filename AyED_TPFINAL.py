@@ -1,6 +1,40 @@
+#Variables
 Clave2 = "admin2021" #A) - Constante de clave, tipo string.
 CantRos, CantCBA, CantBA = 0, 0, 0 # Contadores para la cantidad de empresas por ciudad, tipo int.
 option, option2, repeat, intentos = -1, -1, -1, 3 #Variables auxiliares para guardar datos de los menus.
+
+#Functions
+def mayorCiudad(CantCBA, CantRos, CantBA):
+    if CantRos != CantCBA and CantRos!=CantBA and CantCBA != CantBA: #todos distintos
+        if CantRos > CantCBA:
+            if CantRos > CantBA:
+                print("Rosario es la ciudad con mas empresas")
+            else:
+                print("Buenos Aires es la ciudad con mas empresas")
+        elif CantCBA > CantBA:
+            print("Cordoba es la ciudad con mas empresas")
+        else:
+            print("Buenos Aires es la ciudad con mas empresas")
+    elif CantRos == CantCBA and CantRos == CantBA: #todos iguales
+            print("Las 3 ciudades tienen la misma cantidad de empresas")
+    else: #2 iguales
+            if CantRos == CantCBA:
+                if CantRos > CantBA:
+                    print("Rosario y Cordoba tienen la mayor cantidad de empresas")
+                else:
+                    print("Cordoba tiene la mayor cantidad de empresas")
+            elif CantCBA == CantBA:
+                if CantRos > CantCBA:
+                    print("Rosario es la ciudad con mas empresas")
+                else:
+                    print("Cordoba y Buenos Aires tienen la mayor cantidad de empresas")
+            else: #Rosario igual a BA
+                if CantCBA > CantBA:
+                    print("Cordoba es la ciudad con mas empresas")
+                else:
+                    print("Rosario y Buenos Aires tienen la mayor cantidad de empresas")             
+
+#Main
 while(1):
     print("MENU PRINCIPAL:\n\n1. Empresas\n2. Clientes\n0. Salir\n") #B)
     while(1): #bucle infinito con condicion de salida, simula un do-while (hacer mientras)
@@ -65,35 +99,7 @@ while(1):
                     if(repeat==2): #condicion de salida del bucle
                         break
                 print(f"\nRosario: {CantRos}\nCordoba: {CantCBA}\nBuenos Aires: {CantBA}")
-                #SELECCIONA LA CIUDAD CON MAS EMPRESAS
-                if CantRos != CantCBA and CantRos!=CantBA and CantCBA != CantBA: #todos distintos
-                    if CantRos > CantCBA:
-                        if CantRos > CantBA:
-                            print("Rosario es la ciudad con mas empresas")
-                        else:
-                            print("Buenos Aires es la ciudad con mas empresas")
-                    elif CantCBA > CantBA:
-                        print("Cordoba es la ciudad con mas empresas")
-                    else:
-                        print("Buenos Aires es la ciudad con mas empresas")
-                elif CantRos == CantCBA and CantRos == CantBA: #todos iguales
-                      print("Las 3 ciudades tienen la misma cantidad de empresas")
-                else: #2 iguales
-                      if CantRos == CantCBA:
-                            if CantRos > CantBA:
-                                print("Rosario y Cordoba tienen la mayor cantidad de empresas")
-                            else:
-                                print("Cordoba tiene la mayor cantidad de empresas")
-                      elif CantCBA == CantBA:
-                            if CantRos > CantCBA:
-                                print("Rosario es la ciudad con mas empresas")
-                            else:
-                                print("Cordoba y Buenos Aires tienen la mayor cantidad de empresas")
-                      else: #Rosario igual a BA
-                            if CantCBA > CantBA:
-                                print("Cordoba es la ciudad con mas empresas")
-                            else:
-                                print("Rosario y Buenos Aires tienen la mayor cantidad de empresas")             
+                mayorCiudad(CantCBA, CantRos, CantBA) #SELECCIONA LA CIUDAD CON MAS EMPRESAS Y LA MUESTRA
             elif option2 == 2:
                 pass
             elif option2 == 3:
