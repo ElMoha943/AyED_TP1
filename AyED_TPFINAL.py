@@ -6,12 +6,9 @@ option, option2, repeat, intentos = -1, -1, -1, 3 #Variables auxiliares para gua
 #Functions
 def mayorCiudad(CantCBA, CantRos, CantBA):
     if CantRos != CantCBA and CantRos!=CantBA and CantCBA != CantBA: #todos distintos
-        if CantRos > CantCBA:
-            if CantRos > CantBA:
-                print("Rosario es la ciudad con mas empresas")
-            else:
-                print("Buenos Aires es la ciudad con mas empresas")
-        elif CantCBA > CantBA:
+        if CantRos > CantCBA and CantRos > CantBA:
+            print("Rosario es la ciudad con mas empresas")
+        elif CantCBA > CantBA and CantCBA > CantRos:
             print("Cordoba es la ciudad con mas empresas")
         else:
             print("Buenos Aires es la ciudad con mas empresas")
@@ -32,7 +29,7 @@ def mayorCiudad(CantCBA, CantRos, CantBA):
                 if CantCBA > CantBA:
                     print("Cordoba es la ciudad con mas empresas")
                 else:
-                    print("Rosario y Buenos Aires tienen la mayor cantidad de empresas")             
+                    print("Rosario y Buenos Aires tienen la mayor cantidad de empresas")
 
 #Main
 while(1):
