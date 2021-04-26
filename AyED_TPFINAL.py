@@ -1,13 +1,13 @@
-Clave2 = "admin2021" #A) - Constante de clave.
+Clave2 = "admin2021" #A) - Constante de clave, tipo string.
 CantRos, CantCBA, CantBA = 0, 0, 0 # Contadores para la cantidad de empresas por ciudad, tipo int.
 option, option2, repeat, intentos = -1, -1, -1, 3 #Variables auxiliares para guardar datos de los menus.
 while(1):
-    print("MENU PRINCIPAL:\n\n1. Empresas\n2. Clientes\n0.Salir") #B)
+    print("MENU PRINCIPAL:\n\n1. Empresas\n2. Clientes\n0. Salir\n") #B)
     while(1): #bucle infinito con condicion de salida, simula un do-while (hacer mientras)
         try:
             option=int(input())
         except ValueError: #Para que no chrashee el programa si ingresan un valor que no pueda convertirse a entero.
-            print("Por favor ingrese un numero entero")
+            print("Por favor ingrese un numero entero\n")
         if option == 1 or option == 2 or option == 0: #condicion de salida del bucle
             break
 
@@ -17,10 +17,10 @@ while(1):
     elif option == 1: #D) EMPRESAS
         while(1):
             if intentos > 0:
-                Clave1 = input(f"Ingrese la clave, {intentos} intentos restantes.") #ingreso de datos
+                Clave1 = input(f"Ingrese la clave, {intentos} intentos restantes.\n") #ingreso de datos
                 intentos-=1 #CONTADOR DE INTENTOS FALLIDOS
             else:
-                print("clave incorrecta, agotaste los intentos") #mensaje de error despues de fallar 3 veces
+                print("Clave incorrecta, agotaste los intentos\n") #mensaje de error despues de fallar 3 veces
                 input() #espera a que se toque un enter y luego cierra el programa.
                 raise SystemExit #cierra el programa.
             if Clave1 == Clave2: #VALIDACION DE CLAVE, condicion de salida del bucle
@@ -64,7 +64,7 @@ while(1):
                             break
                     if(repeat==2): #condicion de salida del bucle
                         break
-                print(f"\nRosario: {CantRos}\nCordoba: {CantCBA}\nBuenos Aires: {CantBA})
+                print(f"\nRosario: {CantRos}\nCordoba: {CantCBA}\nBuenos Aires: {CantBA}")
                 #SELECCIONA LA CIUDAD CON MAS EMPRESAS
                 if CantRos != CantCBA and CantRos!=CantBA and CantCBA != CantBA: #todos distintos
                     if CantRos > CantCBA:
