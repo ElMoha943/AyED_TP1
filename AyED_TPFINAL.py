@@ -1,17 +1,12 @@
-Clave2 = "admin2021" #A)
-intentos = 3
-CantRos = 0
-CantCBA = 0
-CantBA = 0
-option=-1
-option2=-1
-repeat=-1
+Clave2 = "admin2021" #A) - Constante de clave.
+CantRos, CantCBA, CantBA = 0, 0, 0 # Contadores para la cantidad de empresas por ciudad, tipo int.
+option, option2, repeat, intentos = -1, -1, -1, 3 #Variables auxiliares para guardar datos de los menus.
 while(1):
     print("MENU PRINCIPAL:\n\n1. Empresas\n2. Clientes\n0.Salir") #B)
     while(1): #bucle infinito con condicion de salida, simula un do-while (hacer mientras)
         try:
             option=int(input())
-        except ValueError:
+        except ValueError: #Para que no chrashee el programa si ingresan un valor que no pueda convertirse a entero.
             print("Por favor ingrese un numero entero")
         if option == 1 or option == 2 or option == 0: #condicion de salida del bucle
             break
@@ -22,11 +17,12 @@ while(1):
     elif option == 1: #D) EMPRESAS
         while(1):
             if intentos > 0:
-                Clave1 = input("Ingrese la clave, {} intentos restantes.".format(intentos)) #ingreso de datos
+                Clave1 = input(f"Ingrese la clave, {intentos} intentos restantes.") #ingreso de datos
                 intentos-=1 #CONTADOR DE INTENTOS FALLIDOS
             else:
                 print("clave incorrecta, agotaste los intentos") #mensaje de error despues de fallar 3 veces
-                input() #simplemente para que no spamee la consola con carteles.
+                input() #espera a que se toque un enter y luego cierra el programa.
+                raise SystemExit #cierra el programa.
             if Clave1 == Clave2: #VALIDACION DE CLAVE, condicion de salida del bucle
                 break
 
@@ -68,22 +64,42 @@ while(1):
                             break
                     if(repeat==2): #condicion de salida del bucle
                         break
-                print("\nRosario: ",CantRos,"\nCordoba: ",CantCBA,"\nBuenos Aires: ",CantBA)
-                if CantRos > CantCBA: #SELECCIONA LA CIUDAD CON MAS EMPRESAS
-                    if CantRos > CantBA:
-                        print("Rosario es la ciudad con mas empresas")
+                print(f"\nRosario: {CantRos}\nCordoba: {CantCBA}\nBuenos Aires: {CantBA})
+                #SELECCIONA LA CIUDAD CON MAS EMPRESAS
+                if CantRos != CantCBA and CantRos!=CantBA and CantCBA != CantBA: #todos distintos
+                    if CantRos > CantCBA:
+                        if CantRos > CantBA:
+                            print("Rosario es la ciudad con mas empresas")
+                        else:
+                            print("Buenos Aires es la ciudad con mas empresas")
+                    elif CantCBA > CantBA:
+                        print("Cordoba es la ciudad con mas empresas")
                     else:
                         print("Buenos Aires es la ciudad con mas empresas")
-                elif CantCBA > CantBA:
-                    print("Cordoba es la ciudad con mas empresas")
-                else:
-                    print("Buenos Aires es la ciudad con mas empresas")
+                elif CantRos == CantCBA and CantRos == CantBA: #todos iguales
+                      print("Las 3 ciudades tienen la misma cantidad de empresas")
+                else: #2 iguales
+                      if CantRos == CantCBA:
+                            if CantRos > CantBA:
+                                print("Rosario y Cordoba tienen la mayor cantidad de empresas")
+                            else:
+                                print("Cordoba tiene la mayor cantidad de empresas")
+                      elif CantCBA == CantBA:
+                            if CantRos > CantCBA:
+                                print("Rosario es la ciudad con mas empresas")
+                            else:
+                                print("Cordoba y Buenos Aires tienen la mayor cantidad de empresas")
+                      else: #Rosario igual a BA
+                            if CantCBA > CantBA:
+                                print("Cordoba es la ciudad con mas empresas")
+                            else:
+                                print("Rosario y Buenos Aires tienen la mayor cantidad de empresas")             
             elif option2 == 2:
                 pass
             elif option2 == 3:
                 pass
             elif option2 == 0: #condicion de salida del bucle
                 break
-    intentos = 3
-    if option == 0:
+    intentos = 3 #Reset a los intentos para cuando vuela a ingresar la contraseña
+    if option == 0: #Si se preciona 0 en el primer menu, sale del bucle principal, cerrando el programa.
         break
