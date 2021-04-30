@@ -19,7 +19,7 @@ def mayorCiudad(CantCBA, CantRos, CantBA):
                 if CantRos > CantBA:
                     print("Rosario y Cordoba tienen la mayor cantidad de empresas")
                 else:
-                    print("Cordoba tiene la mayor cantidad de empresas")
+                    print("Buenos Aires tiene la mayor cantidad de empresas")
             elif CantCBA == CantBA:
                 if CantRos > CantCBA:
                     print("Rosario es la ciudad con mas empresas")
